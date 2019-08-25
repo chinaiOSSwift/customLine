@@ -55,6 +55,7 @@
 
 
 /// 注意:
+
  for (int i = 0; i < self.points.count; i++) {
         float h = [self.points[i] floatValue];
         pos_y = ViewHeight - ((h + 100) / 5)  * itemHeight; // 注意这里
