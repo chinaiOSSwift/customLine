@@ -114,10 +114,21 @@
     [path moveToPoint:CGPointMake(pos_x + 3, pos_y)]; //起始点加 3 是为了在边界看不出来,但是不影响后面的点,所有没有关系
     for (int i = 0; i < self.points.count; i++) {
         float h = [self.points[i] floatValue];
+        CGFloat Y = 0;
+        CGFloat nextY = 0;
+        if (i != self.points.count - 1 && self.points.count > 2 ) {
+          float nextH = [self.points[i + 1] floatValue];
+            nextY = ViewHeight - ((nextH + 100) / 5)  * itemHeight; // 注意这里
+        }
         pos_y = ViewHeight - ((h + 100) / 5)  * itemHeight; // 注意这里
+        if (pos_y >= nextY) { // 上升,不用动
+            Y =  pos_y - 12;
+        }else{
+            Y =  pos_y + 10;
+        }
         NSString *tempStr = [NSString stringWithFormat:@"%.lf",h];
         [path addLineToPoint:CGPointMake(pos_x, pos_y)];
-        [tempStr drawInRect:CGRectMake(pos_x - 15, pos_y - 12, 30, 20) withAttributes:@{NSForegroundColorAttributeName:[UIColor cyanColor],NSFontAttributeName:[UIFont systemFontOfSize:13]}];
+        [tempStr drawInRect:CGRectMake(pos_x - 15, Y, 30, 20) withAttributes:@{NSForegroundColorAttributeName:[UIColor cyanColor],NSFontAttributeName:[UIFont systemFontOfSize:13]}];
         pos_x -= itemWidth;
     }
     [path stroke];
