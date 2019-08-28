@@ -24,12 +24,16 @@
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [super touchesBegan:touches withEvent:event];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(randomNum) userInfo:nil repeats:true];
+    [timer setFireDate:[NSDate distantPast]];
+}
+
+- (void)randomNum{
     NSInteger temp0 = (40.0 + arc4random_uniform(20)) * -1;
     NSInteger temp1 = (60.0 + arc4random_uniform(20)) * -1;
     NSInteger temp2 = (50.0 + arc4random_uniform(20)) * -1;
     NSInteger temp3 = (70.0 + arc4random_uniform(10)) * -1;
     NSInteger temp4 = (30.0 + arc4random_uniform(10)) * -1;
-    NSLog(@"temp--       %ld",temp0);
     [self.customView drawRateWithPoint:[NSNumber numberWithInteger:temp0] Point1:[NSNumber numberWithInteger:temp1] Point2:[NSNumber numberWithInteger:temp2] Point3:[NSNumber numberWithInteger:temp3] Point4:[NSNumber numberWithInteger:temp4]];
 }
 

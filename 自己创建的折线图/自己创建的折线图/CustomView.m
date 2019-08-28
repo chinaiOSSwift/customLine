@@ -24,7 +24,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame: frame]) {
         self.backgroundColor = [UIColor whiteColor];
-        [self setUpLineView];
+        
     }
     return self;
 }
@@ -57,6 +57,7 @@
         YRightLB.textColor = [UIColor blackColor];
         [self addSubview:YRightLB];
     }
+    [self setUpLineView];
 }
 
 /*
@@ -69,9 +70,8 @@
     _lineView = lineView;
     lineView.horizontalLineNum = 11;
     lineView.verticalLineNum = 15;
-    lineView.YStartNum = ((NSString *)self.YTitlesArr.lastObject).intValue;
-//    lineView.YStepSize = abs((((NSString *)self.YTitlesArr.lastObject).intValue - ((NSString *)self.YTitlesArr.firstObject).intValue) / ((int)self.YTitlesArr.count - 1));
-    lineView.YStepSize = 5;
+    lineView.YStartNum = ((NSString *)self.YTitlesArr.firstObject).intValue; //-100
+    lineView.YEndNum = ((NSString *)self.YTitlesArr.lastObject).intValue; //-30
     [self addSubview:lineView];
     
 }

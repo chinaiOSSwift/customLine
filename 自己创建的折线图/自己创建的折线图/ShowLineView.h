@@ -17,13 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign)int verticalLineNum;
 
 /**
- Y轴的起始数据
+ Y轴的最大值数据
  */
 @property(nonatomic,assign)int YStartNum;
 /**
- Y轴的间隔 step 步长
+ Y轴的最小值数据
  */
-@property(nonatomic,assign)int YStepSize;
+@property(nonatomic,assign)int YEndNum;
 
 - (void)drawRateWithPoint:(NSNumber *)point Point1:(NSNumber *)point1 Point2:(NSNumber *)point2 Point3:(NSNumber *)point3 Point4:(NSNumber *)point4;
 @end
